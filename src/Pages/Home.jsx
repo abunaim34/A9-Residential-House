@@ -7,6 +7,7 @@ import slider2 from "../assets/slide 2.jpg"
 import slider3 from "../assets/slide 3.jpg"
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import Estate from '../Components/Estate';
 
 
 AOS.init();
@@ -54,6 +55,8 @@ const Home = () => {
                     </div>
                 </SwiperSlide>
             </Swiper>
+
+            <Estate />
         </div>
     );
 };

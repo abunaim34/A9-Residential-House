@@ -13,6 +13,7 @@ import Contact from './Pages/Contact';
 import Login from './Components/Login';
 import AuthProvider from './Provider/AuthProvider';
 import Register from './Components/Register';
+import CardDetails from './Components/CardDetails';
 
 
 const router = createBrowserRouter([
@@ -22,7 +23,13 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Home />
+        element: <Home />,
+        loader: () => fetch('/Residential.json')
+      },
+      {
+        path: "/:id",
+        element: <CardDetails />,
+        loader: () => fetch('/Residential.json')
       },
       {
         path: "/updateProfile",
