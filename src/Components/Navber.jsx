@@ -27,7 +27,7 @@ const Navber = () => {
                         {navLinks}
                     </ul>
                 </div>
-                <Link to="/" className="btn btn-ghost lg:text-2xl md:text-xl font-black">Residential House</Link>
+                <Link to="/" className="btn btn-ghost lg:text-2xl md:text-xl font-black"><span className='bg-gradient-to-r from-[#1DD100] via-blue-500 to-black text-transparent bg-clip-text bg-300% animate-gradient'>Residential House</span></Link>
             </div>
             <div className="navbar-center hidden md:flex">
                 <ul className="menu menu-horizontal px-1 font-bold">
@@ -38,7 +38,7 @@ const Navber = () => {
                 {user ? <>
                     <Link onClick={handleLogOut} to="/login" className="btn">Log Out</Link>
                 </> :
-                <Link to="/login" className="btn">Log In</Link>
+                <Link to="/login" className="btn bg-[#1DD100] text-white font-semibold">Log In</Link>
                 }
             </div>
         </div>

@@ -13,5 +13,6 @@
 
 ### npm package
   .npm propTypes,
-  .
+  .Swiper Slider,
+  .React Hook Form
 

@@ -1,13 +1,12 @@
-import Footer from "../Components/Footer";
+
 
 
 const Contact = () => {
     return (
         <div className="">
-            <div>
+            <div >
                 
             </div>
-            <Footer />
         </div>
     );
 };
