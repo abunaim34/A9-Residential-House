@@ -13,7 +13,7 @@ import Contact from './Pages/Contact';
 import Login from './Components/Login';
 import AuthProvider from './Provider/AuthProvider';
 import Register from './Components/Register';
-import CardDetails from './Components/CardDetails';
+import SubCetagoriesDetails from './Components/SubCetagoriesDetails';
 
 
 const router = createBrowserRouter([
@@ -27,8 +27,8 @@ const router = createBrowserRouter([
         loader: () => fetch('/Residential.json')
       },
       {
-        path: "/:id",
-        element: <CardDetails />,
+        path: "/subCategory/:id",
+        element: <SubCetagoriesDetails />,
         loader: () => fetch('/Residential.json')
       },
       {
