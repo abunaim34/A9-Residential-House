@@ -1,13 +1,13 @@
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useForm } from "react-hook-form"
 import { FaGoogle, FaGithub, } from "react-icons/fa";
 
 
 const Login = () => {
-    const { logInUser } = useContext(AuthContext)
-
+    const { logInUser, googleLogin, githubLogin } = useContext(AuthContext)
+    const navigate = useNavigate()
 
     const {
         register,
@@ -19,6 +19,8 @@ const Login = () => {
         const { email, password } = data || {}
         console.log(email, password);
 
+        navigate("/")
+
         // Login user
         logInUser(email, password)
             .then(result => {
@@ -27,6 +29,26 @@ const Login = () => {
             .catch(error => {
                 console.log(error);
             })
+    }
+
+    const handleGoogleLogin = () => {
+        googleLogin()
+        .then(result => {
+            console.log(result.user);
+        })
+        .catch(error => {
+            console.log(error);
+        })
+    }
+
+    const handleGithubLogin = () => {
+        githubLogin()
+        .then(result => {
+            console.log(result.user);
+        })
+        .catch(error => {
+            console.log(error);
+        })
     }
     return (
         <div className="flex flex-col lg:flex-row text-center items-center justify-between lg:mx-28">
@@ -63,11 +85,11 @@ const Login = () => {
                         <button className="btn font-bold text-white bg-[#23BE0A]">Login</button>
                         <div className="divider mt-6"> OR</div>
                         <div className="p-4 flex flex-col md:flex-row justify-around items-center space-y-3 md:space-y-0">
-                            <button className="btn btn-outline ">
+                            <button onClick={handleGoogleLogin} className="btn btn-outline ">
                                 <FaGoogle />
                                 Login with Google
                             </button>
-                            <button className="btn btn-outline">
+                            <button onClick={handleGithubLogin} className="btn btn-outline">
                                 <FaGithub />
                                 Login with Github
                             </button>

@@ -14,6 +14,7 @@ import Login from './Components/Login';
 import AuthProvider from './Provider/AuthProvider';
 import Register from './Components/Register';
 import SubCetagoriesDetails from './Components/SubCetagoriesDetails';
+import PrivateRouter from './PrivateRouter/PrivateRouter';
 
 
 const router = createBrowserRouter([
@@ -28,16 +29,16 @@ const router = createBrowserRouter([
       },
       {
         path: "/subCategory/:id",
-        element: <SubCetagoriesDetails />,
+        element: <PrivateRouter><SubCetagoriesDetails /></PrivateRouter>,
         loader: () => fetch('/Residential.json')
       },
       {
         path: "/updateProfile",
-        element: <UpdateProfile />
+        element: <PrivateRouter><UpdateProfile /></PrivateRouter>
       },
       {
         path: "/contact",
-        element: <Contact />
+        element: <PrivateRouter><Contact /></PrivateRouter>
       },
       {
         path: "/login",
