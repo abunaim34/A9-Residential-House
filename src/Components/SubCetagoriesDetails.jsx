@@ -6,7 +6,7 @@ const SubCetagoriesDetails = () => {
     const {id} = useParams()
     const subCetegoryDetails = subCategoriesDetails.find(details => details.id == id)
     return (
-        <div className='lg:mx-28 my-14'>
+        <div className='lg:mx-36 my-14'>
             <ShowSubCetagroyDetails subCetegoryDetails={subCetegoryDetails}></ShowSubCetagroyDetails>
         </div>
     );

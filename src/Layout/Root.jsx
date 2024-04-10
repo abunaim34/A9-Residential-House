@@ -9,10 +9,10 @@ const Root = () => {
             <div className="lg:mx-28">
                 <Navber></Navber>
             </div>
-            <div className='min-h-[calc(100vh-160px)]'>
+            <div className=''>
                 <Outlet></Outlet>
             </div>
-            <div><Footer /></div>
+            <div className="mt-14"><Footer /></div>
         </div>
     );
 };
