@@ -3,6 +3,7 @@ import { AuthContext } from "../Provider/AuthProvider";
 import { Link, useNavigate } from "react-router-dom"
 import { useForm } from "react-hook-form"
 import { FaGoogle, FaGithub, } from "react-icons/fa";
+import toast from 'react-hot-toast';
 
 
 const Login = () => {
@@ -19,15 +20,26 @@ const Login = () => {
         const { email, password } = data || {}
         console.log(email, password);
 
-        navigate("/")
+        if(!/[A-Z]/.test(password)){
+            return toast.error('Your password should have at least one Uppercase characters')
+        }
+        else if(!/[a-z]/.test(password)){
+            return toast.error('Your password should have at least one Lowercase characters')
+        }
+        else if(password.length < 6){
+            return toast.error('Password should be at least 6 characters or longer')
+        }
+
+        
 
         // Login user
         logInUser(email, password)
             .then(result => {
-                console.log(result.user);
+                toast.success('Login successfully', result.user)
+                navigate("/")
             })
             .catch(error => {
-                console.log(error);
+                toast.error('Incorrenct password', error)
             })
     }
 
