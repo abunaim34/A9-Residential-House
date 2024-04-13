@@ -1,10 +1,17 @@
 import { useForm } from "react-hook-form"
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import toast from 'react-hot-toast';
+import { FaEye, FaEyeSlash } from 'react-icons/fa'
+import { Helmet } from "react-helmet-async";
+
+
 
 const Register = () => {
     const { createUser } = useContext(AuthContext)
+    const [showPassword, setShowPassword] = useState(false)
+    const navigate = useNavigate()
 
     const {
         register,
@@ -16,9 +23,20 @@ const Register = () => {
         const { email, password, name, photoURL } = data
         console.log(name, photoURL, email, password);
 
+        if (password.length < 6) {
+            return toast.error('Password should be at least 6 characters or longer')
+        }
+        if (!/[A-Z]/.test(password)) {
+            return toast.error('Your password should have at least one Uppercase characters')
+        }
+        else if (!/[a-z]/.test(password)) {
+            return toast.error('Your password should have at least one Lowercase characters')
+        }
+
         createUser(email, password)
             .then(result => {
-                console.log(result.user);
+                toast.success('Login successfully', result.user)
+                navigate('/')
             })
             .catch(error => {
                 console.log(error);
@@ -26,6 +44,9 @@ const Register = () => {
     }
     return (
         <div className=" flex flex-col lg:flex-row text-center items-center justify-between lg:mx-28">
+            <Helmet>
+                <title>Residential House | Register page</title>
+            </Helmet>
             <div className="hero mt-12 rounded-3xl bg-cover" >
                 <div className="hero-content text-center text-neutral-content">
                     <div className="flex justify-around gap-8 lg:my-8">
@@ -58,17 +79,22 @@ const Register = () => {
                         </label>
                         <input {...register("photoURL",)} type="text" placeholder="Photo URL" className="input input-bordered" />
                     </div>
-                    <div className="form-control">
+                    <div className="form-control relative">
                         <label className="label">
                             <span className="label-text font-semibold">Password</span>
                         </label>
-                        <input {...register("password", { required: true })} type="password" placeholder="password" className="input input-bordered" />
+                        <input {...register("password", { required: true })} type={showPassword ? "text" : "password"} placeholder="password" className="input input-bordered" />
+                        <span onClick={() => setShowPassword(!showPassword)} className="absolute top-12 right-2">
+                            {
+                                showPassword ? <FaEyeSlash /> : <FaEye />
+                            }
+                        </span>
                         {errors.password && <span className="text-red-600">This field is required</span>}
                     </div>
                     <div className="form-control mt-3">
                         <button className="btn font-bold text-white bg-[#23BE0A]">Register</button>
                         <div className="text-center mt-4">
-                            <p>Dont have an account? <Link to='/login' className="text-blue-500 font-semibold">Log In</Link></p>
+                            <p>Have an account? <Link to='/login' className="text-blue-500 font-semibold">Log In</Link></p>
                         </div>
                     </div>
                 </form>

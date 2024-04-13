@@ -8,12 +8,16 @@ import slider3 from "../assets/slide 3.jpg"
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Estate from '../Components/Estate';
+import { Helmet } from 'react-helmet-async';
 
 
 AOS.init();
 const Home = () => {
     return (
         <div className='lg:mx-28'>
+            <Helmet>
+                <title>Residential House | Home</title>
+            </Helmet>
             <Swiper navigation={true} modules={[Navigation]} loop={true} className="mySwiper">
                 <SwiperSlide >
                     <div className="hero mt-12 rounded-3xl bg-cover" style={{ backgroundImage: 'url(https://i.ibb.co/GdXPmrD/Screenshot-2024-04-08-225728.png)'}}>

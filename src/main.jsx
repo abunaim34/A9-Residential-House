@@ -15,13 +15,16 @@ import AuthProvider from './Provider/AuthProvider';
 import Register from './Components/Register';
 import SubCetagoriesDetails from './Components/SubCetagoriesDetails';
 import PrivateRouter from './PrivateRouter/PrivateRouter';
-import  { Toaster } from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
+import ErrorPage from './Components/ErrorPage';
+import { HelmetProvider } from 'react-helmet-async';
 
 
 
 const router = createBrowserRouter([
   {
     path: "/",
+    errorElement: <ErrorPage />,
     element: <Root></Root>,
     children: [
       {
@@ -56,9 +59,11 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <AuthProvider>
-      <RouterProvider router={router} />
-      <Toaster />
-    </AuthProvider>
+    <HelmetProvider>
+      <AuthProvider>
+        <RouterProvider router={router} />
+        <Toaster />
+      </AuthProvider>
+    </HelmetProvider>
   </React.StrictMode>,
 )

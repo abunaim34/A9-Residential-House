@@ -1,9 +1,14 @@
 import PropTypes from 'prop-types';
+import { Helmet } from "react-helmet-async";
+
 
 const ShowSubCetagroyDetails = ({ subCetegoryDetails }) => {
     const { img, estate_title, segment_name, Status, description, facilities } = subCetegoryDetails || {}
     return (
         <div className="card lg:w-[1000px] md:w-[700px] mx-auto bg-base-100 border border-t-0 shadow-xl lg:space-x-14">
+            <Helmet>
+                <title>Residential House | SubCategory Details</title>
+            </Helmet>
             <div className=" w-full text-center">
                 <figure><img data-aos="fade-down"className="w-[300px] md:w-[650px] lg:w-[850px] md:h-[500px] h-full rounded-3xl" src={img} alt="Album" /></figure>
             </div>
