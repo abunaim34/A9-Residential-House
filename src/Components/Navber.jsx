@@ -3,13 +3,17 @@ import { NavLink, Link } from "react-router-dom"
 import { AuthContext } from "../Provider/AuthProvider";
 
 const Navber = () => {
-    const { user, logOutUser } = useContext(AuthContext)
+    const { user, logOutUser, loading } = useContext(AuthContext)
 
     const handleLogOut = () => {
         logOutUser()
             .then()
             .catch(error => console.error(error))
     }
+    
+//     const handleeta = () =>{
+// console.log('kichu ekta');
+//     }
 
     const navLinks = <>
         <li><NavLink to="/">Home</NavLink></li>
@@ -36,12 +40,27 @@ const Navber = () => {
                     {navLinks}
                 </ul>
             </div>
-            <div className="navbar-end">
-                {user ? <>
-                    <Link onClick={handleLogOut} to="/login" className="btn bg-[#1DD100] text-white font-semibold">Log Out</Link>
-                </> :
+            <div className="navbar-end z-10">
+                {loading ? <span className="loading loading-bars loading-xs"></span> : user? <div className="dropdown dropdown-end">
+                            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                                <div className="w-20 rounded-full border-4">
+                                    <img title={user?.displayName} src={user?.photoURL } />
+                                </div>
+                            </label>
+                            <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+                                <li>
+                                    <button className="btn btn-sm  btn-ghost">{user?.displayName||'user name not found'}</button>
+                                </li>
+                                <li>
+                                    <Link to="/login" className="btn"
+                                        onClick={handleLogOut}>Logout
+                                    </Link>
+                                </li>
+                            </ul>
+                        </div> :
                     <Link to="/login" className="btn bg-[#1DD100] text-white font-semibold">Log In</Link>
                 }
+
             </div>
         </div>
     );

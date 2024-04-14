@@ -51,6 +51,7 @@ const Login = () => {
         .then(result => {
             toast.success('Login successfully', result.user)
             navigate("/")
+            console.log(result.user);
         })
         .catch(error => {
             console.log(error);
@@ -96,7 +97,7 @@ const Login = () => {
                             <span className="label-text font-semibold">Password</span>
                         </label>
                         <input {...register("password")} type={showPassword ? "text" : "password"} placeholder="password" className="input input-bordered" />
-                        <span onClick={() => setShowPassword(!showPassword)} className="absolute top-12 right-2">
+                        <span onClick={() => setShowPassword(!showPassword)} className="absolute top-12 right-2 cursor-pointer">
                             {
                                 showPassword ? <FaEyeSlash /> : <FaEye />
                             }

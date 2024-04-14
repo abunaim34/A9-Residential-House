@@ -9,7 +9,7 @@ import { Helmet } from "react-helmet-async";
 
 
 const Register = () => {
-    const { createUser } = useContext(AuthContext)
+    const { createUser, updateUserProfile, setReload } = useContext(AuthContext)
     const [showPassword, setShowPassword] = useState(false)
     const navigate = useNavigate()
 
@@ -35,8 +35,14 @@ const Register = () => {
 
         createUser(email, password)
             .then(result => {
-                toast.success('Login successfully', result.user)
-                navigate('/')
+                updateUserProfile(name, photoURL)
+                    .then(() => {
+                        setReload(true)
+                        toast.success('Login successfully', result.user)
+                        navigate('/')
+                    
+                    })
+                console.log(result.user);
             })
             .catch(error => {
                 console.log(error);
@@ -84,7 +90,7 @@ const Register = () => {
                             <span className="label-text font-semibold">Password</span>
                         </label>
                         <input {...register("password", { required: true })} type={showPassword ? "text" : "password"} placeholder="password" className="input input-bordered" />
-                        <span onClick={() => setShowPassword(!showPassword)} className="absolute top-12 right-2">
+                        <span onClick={() => setShowPassword(!showPassword)} className="absolute top-12 right-2 cursor-pointer">
                             {
                                 showPassword ? <FaEyeSlash /> : <FaEye />
                             }
