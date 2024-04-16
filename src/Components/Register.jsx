@@ -1,5 +1,5 @@
 import { useForm } from "react-hook-form"
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import { Link, useNavigate } from "react-router-dom"
 import toast from 'react-hot-toast';
@@ -16,12 +16,14 @@ const Register = () => {
     const {
         register,
         handleSubmit,
+        reset,
         formState: { errors },
     } = useForm()
 
     const onSubmit = (data) => {
-        const { email, password, name, photoURL } = data
-        console.log(name, photoURL, email, password);
+        const { email, password, name, photoURL } = data || {}
+
+        reset()
 
         if (password.length < 6) {
             return toast.error('Password should be at least 6 characters or longer')
@@ -38,16 +40,18 @@ const Register = () => {
                 updateUserProfile(name, photoURL)
                     .then(() => {
                         setReload(true)
-                        toast.success('Login successfully', result.user)
+                        toast.success('Register successfully', result.user)
                         navigate('/')
-                    
                     })
-                console.log(result.user);
             })
             .catch(error => {
                 console.log(error);
             })
     }
+
+    useEffect(()=> {
+        reset()
+    }, [reset])
     return (
         <div className=" flex flex-col lg:flex-row text-center items-center justify-between lg:mx-28">
             <Helmet>

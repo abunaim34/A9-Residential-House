@@ -28,7 +28,7 @@ const ShowSubCetagroyDetails = ({ subCetegoryDetails }) => {
                         {facilities.map((facility, i) => <li key={i} className="text-[#23BE0A] font-medium px-4 bg-gray-300 rounded-full">{facility}</li>)}
                     </ul>
                 </div>
-                <div data-aos="fade-left" className="pt-0 border-b-2 pb-3 ">
+                <div data-aos="fade-right" className="pt-0 border-b-2 pb-3 ">
                     <span className="font-bold text-black">Description : </span><span >{description}</span>
                 </div>
                 <div className="flex justify-between mt-6">

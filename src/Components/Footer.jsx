@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="border-b-2 pb-10">
         <div>
           <h1 className=" text-2xl md:text-4xl font-black bg-gradient-to-r from-[#1DD100] via-black to-primary text-transparent bg-clip-text bg-300% animate-gradient">Residential House</h1>
-          <p className="tex-[#12132D99] pt-5 mx-auto md:w-[690px]"> Empowering people with accessible and actionable information to help them succeed</p>
+          <p className="tex-[#12132D99] pt-5 mx-auto md:w-[690px]"> Contact our Google, Github, Faceook or instagram to collect any kind of information.</p>
         </div>
         <nav>
           <div className="grid grid-flow-col gap-4 mt-4">

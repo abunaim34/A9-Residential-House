@@ -12,9 +12,8 @@
 5. 
 
 ### npm package
-  .npm propTypes,
-  .Swiper Slider,
-  .React Hook form,
-  .AOS Package
+1. Swiper Slider,
+2. React Hook form,
+3. AOS Package
 
 

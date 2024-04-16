@@ -6,7 +6,7 @@ import { Outlet } from "react-router-dom"
 const Root = () => {
     return (
         <div>
-            <div className="lg:mx-28">
+            <div className="lg:mx-28 mt-10">
                 <Navber></Navber>
             </div>
             <div className='min-h-[calc(100vh-435px)]'>

@@ -7,7 +7,7 @@ import toast from 'react-hot-toast';
 
 
 const UpdateProfile = () => {
-    const { user, updateUserProfile, setReload } = useContext(AuthContext)
+    const { user, updateUserProfile, setUser } = useContext(AuthContext)
 
     const {
         register,
@@ -16,12 +16,16 @@ const UpdateProfile = () => {
 
 
     const handleUpdateProfile = (data) => {
-        const { name, photoURL } = data
+        const { name, photoURL } = data || {};
 
         updateUserProfile(name, photoURL)
             .then(() => {
-                setReload(true)
-                toast.success('Update successfully',)
+                setUser({
+                    ...user,
+                    displayName: name,
+                    photoURL: photoURL
+                })
+                toast.success('Update successfully')
             })
     }
     return (

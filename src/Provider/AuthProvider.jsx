@@ -11,6 +11,10 @@ import { useEffect } from "react";
 export const AuthContext = createContext(null)
 const googleProvider = new GoogleAuthProvider()
 const githubProvider = new GithubAuthProvider()
+githubProvider.addScope("read:user");
+githubProvider.addScope("user:email");
+
+
 
 const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null)
@@ -23,7 +27,7 @@ const AuthProvider = ({children}) => {
     }
 
     const updateUserProfile = (name, photoURL) => {
-        return updateProfile(auth.currentUser,{
+        return updateProfile(auth.currentUser, {
             displayName: name,
             photoURL: photoURL
         })
@@ -59,7 +63,7 @@ const AuthProvider = ({children}) => {
 
     const authInfo = {user, createUser,
      loading, logInUser, logOutUser, googleLogin,
-     githubLogin, updateUserProfile, setReload}
+     githubLogin, updateUserProfile, setReload, setUser,}
     return (
         
         <AuthContext.Provider value={authInfo}>
