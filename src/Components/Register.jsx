@@ -45,7 +45,7 @@ const Register = () => {
                     })
             })
             .catch(error => {
-                console.log(error);
+                toast.error( error.message)
             })
     }
 
@@ -62,7 +62,7 @@ const Register = () => {
                     <div className="flex justify-around gap-8 lg:my-8">
                         <div data-aos="fade-right" data-aos-duration="1000" className="lg:text-start md:text-center mb-8 text-black">
                             <h1 className="mb-5 md:text-5xl text-3xl font-bold">Welcome to the <br /> <span className='bg-gradient-to-r from-[#1DD100] via-red-500 to-blue-400 text-transparent bg-clip-text bg-300% animate-gradient'>Residential House</span><br /> Register Page..</h1>
-                            <p className="mb-5 md:w-96 lg:w-full">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+                            <p className="mb-5 md:w-96 lg:w-full">Welcome to Residential House, where luxury meets comfort and every stay is an unforgettable experience. Join our exclusive community today by signUp for create your personal account. By create a new member</p>
                         </div>
                     </div>
                 </div>

@@ -15,8 +15,7 @@ const Contact = () => {
                 <div className="container flex flex-col items-center justify-center px-5 mx-auto my-8 space-y-8 text-center ">
                     <img src={bnr} alt="" />
                     <h2 className="text-4xl font-bold">Contact us</h2>
-                    <p className="lg:w-1/2">Check out our Products and Stay Safe sections to see if your question has already been answered.
-                        If not, please get in touch with us and we will get back to you as soon as possible.
+                    <p className="lg:w-1/2">Check our products and to collect any information or complain about any matter contact our email or our phone number.
                     </p>
                     <div>
                         <h2 className="text-3xl font-bold">You can also call or email us</h2>
@@ -29,7 +28,7 @@ const Contact = () => {
                             <FaPhone />
                             <h4> Call us</h4>
                         </div>
-                        <p>01882585833</p>
+                        <p className="font-sans">01882585833</p>
                     </div>
                     <div className="lg:mx-36 flex flex-col items-center">
                         <div className="flex items-center gap-3 font-bold">
